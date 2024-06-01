@@ -1,0 +1,59 @@
+<div class="alert alert-warning" *ngIf="addForm.dirty && name.invalid">name should be min 5 characters</div>
+<div class="alert alert-warning" *ngIf="addForm.dirty && email.invalid">Enter correct email</div>
+<!-- <div class="alert alert-warning" *ngIf="password.dirty">Password should contain at least 8 characters, one uppercase letter, one lowercase letter, one number, one special character (e.g., !, #, $).</div> -->
+
+
+<div class="container">
+
+
+    <form (ngSubmit)="!addForm.invalid && onSubmit()" #addForm="ngForm">
+
+        <fieldset class="form-group">
+            <label>Name</label>
+            <input type="text" #name="ngModel" ngModel name="[a-zA-Z]*" [(ngModel)]="std.stdName" class="form-control"
+                name="name" required="required" minlength="5">
+        </fieldset>
+
+        <fieldset class="form-group">
+            <label>Email</label>
+            <input type="email" #email="ngModel" ngModel email="true" [(ngModel)]="std.stdEmail" class="form-control"
+                name="email" required="required">
+        </fieldset>
+
+        <fieldset class="form-group">
+            <label>Password</label>
+            <input type="password" #password="ngModel"  [(ngModel)]="std.password" class="form-control"
+                name="password" required="required">
+        </fieldset>
+  <!-- ngModel password="/^(?=[^A-Z]*[A-Z])(?=[^a-z]*[a-z])(?=\D*\d).{8,}$" -->
+        <fieldset class="form-group">
+
+            <!-- <div class="container"> -->
+           
+                <div class="col">
+             
+                    <label for="courses">Courses</label>
+
+                    <div style="width:80%">
+                        <ng-multiselect-dropdown 
+                        [(ngModel)]="std.courses" 
+                        [ngModelOptions]="{standalone: true}"
+                        [settings]="dropdownSettings" 
+                            [placeholder]="'Select Your course'" 
+                            [data]="courseDetails">
+                        </ng-multiselect-dropdown>
+                    </div>
+
+                </div>
+
+            <!-- </div> -->
+        
+        </fieldset>
+
+      <br>    
+
+        <div class="container">
+            <button type="submit" class="btn btn-success">Add Student</button>
+        </div>
+    </form>
+</div>

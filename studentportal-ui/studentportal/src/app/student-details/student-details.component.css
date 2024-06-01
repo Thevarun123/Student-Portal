@@ -1,0 +1,11 @@
+.alert alert-warning{
+    color: red;
+}
+
+.unauthorised-container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 50vh;
+    width: 100%;
+}

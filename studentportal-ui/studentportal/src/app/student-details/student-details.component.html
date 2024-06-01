@@ -1,0 +1,52 @@
+<div class="alert alert-warning" *ngIf="deleteMessage">{{deleteMessage}}</div>
+<div class="unauthorised-container" *ngIf="unauthorisedMsg">
+      <div class="alert alert-warning">Access Denied</div>
+</div>
+
+
+
+<div class="container" *ngIf="!unauthorisedMsg">
+    <table class="table">
+        <thead>
+            <tr>
+                <th scope="col">Id</th>
+                <th scope="col">Name</th>
+                <th scope="col">Email</th>
+                <!-- <th colspan="2">Courses</th> -->
+                <!-- <th>Update</th> -->
+                <th *ngIf="studentDetails.courses.length && studentDetails.courses.length > 0"
+                    [attr.colspan]="studentDetails.courses.length">Courses</th>
+                <th>Update</th>
+                <th *ngIf="roleAdmin">Delete</th>
+            </tr>
+        </thead>
+        <tbody>
+            <!-- <tr *ngFor="let i of studentDetails"> -->
+            <!-- <div *ngIf="studentDetails && studentDetails.length > 0"> -->
+
+            <tr *ngIf="studentDetails ">
+                <td>{{studentDetails.stdId}}</td>
+                <td>{{studentDetails.stdName | titlecase}}</td>
+                <td>{{studentDetails.stdEmail}}</td>
+                <td *ngFor="let c of studentDetails.courses">
+                    <!-- {{c.courseId}},  -->
+                    {{c.courseName | titlecase}}
+                </td>
+                <td><button class="btn btn-success" (click)="updateStudent(studentDetails.stdId)">Update</button>
+                </td>
+                <td *ngIf="roleAdmin"><button class="btn btn-success"
+                        (click)="deleteStudent(studentDetails.stdId)">Delete</button>
+                <!-- <td *ngIf="!roleAdmin"><button class="btn btn-warning">Not Allowed</button> -->
+
+                </td>
+
+            </tr>
+
+            <!-- </div> -->
+        </tbody>
+    </table>
+</div>
+
+<div class="container">
+    <button class="btn btn-success bg-dark" (click)="return()">Return to Portal</button>
+</div>

@@ -1,0 +1,42 @@
+<h1 class="container">Student Portal</h1>
+
+<!-- <div class="customise">
+    <div class="alert alert-warning" *ngIf="userErrorMsg">{{userErrorMsg}}</div>
+</div> -->
+<div class="container">
+    <div class="btn btn-info" *ngIf="deleteMessage">{{deleteMessage}}</div>
+</div>
+
+<div class="container">
+    <table class="table ">
+        <thead>
+            <tr>
+                <th scope="col">Id</th>
+                <th scope="col">Name</th>
+                <th scope="col">Email</th>
+                <!-- <th colspan="2">Courses</th> -->
+                <!-- <th>Update</th> -->
+                <!-- <th>Action</th> -->
+            </tr>
+        </thead>
+        <tbody *ngIf="!student">
+            <tr *ngFor="let i of studentDetails, let len = index">
+                <td><button class="btn btn-light" (click)="showStudentDetails(i.stdId)">{{len + 1}}</button></td>
+                <td>{{i.stdName | titlecase}}</td>
+                <td><button class="btn btn-link" (click)="showStudentDetails(i.stdId)">{{i.stdEmail}}</button></td>
+            </tr>
+        </tbody>
+        <tbody *ngIf="student">
+            <tr >
+                <td><button class="btn btn-light" (click)="showStudentDetails(student.stdId)">{{student.stdId}}</button></td>
+                <td>{{student.stdName | titlecase}}</td>
+                <td><button class="btn btn-link" (click)="showStudentDetails(student.stdId)">{{student.stdEmail}}</button></td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+
+
+<div class="container" *ngIf="roleAdmin">
+    <button (click)="addStudent()" class="btn btn-success">Add</button>
+</div>

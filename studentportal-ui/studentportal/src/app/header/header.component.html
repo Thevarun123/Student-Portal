@@ -1,0 +1,24 @@
+<header>
+
+    <nav class="navbar navbar-expand-md navbar-dark bg-dark">
+
+        <div><a class="navbar-brand" routerLink="/students">Student Portal</a></div>
+
+        <ul class="navbar-nav">
+            <li *ngIf="service.isUserLoggedIn() && roleAdmin"  class="nav-link"><a routerLink="/students">Home</a></li>
+            <!-- <li *ngIf="isUserLoggedIn" class="nav-link"><a routerLink="/welcome/varun">Home</a></li> -->
+            <li *ngIf="service.isUserLoggedIn() && roleAdmin" class="nav-link"><a routerLink="/student">Add Student</a></li>
+            <!-- <li *ngIf="isUserLoggedIn" class="nav-link"><a routerLink="/todos">Todos</a></li> -->
+        </ul>
+
+        <ul class="navbar-nav navbar-collapse justify-content-end">
+            <li *ngIf="!service.isUserLoggedIn()" class="nav-link"><a routerLink="/login">Login</a></li>
+            <!-- <li  *ngIf="!isUserLoggedIn" class="nav-link"><a routerLink="/login">Login</a></li> -->
+            <li *ngIf="service.isUserLoggedIn()" class="nav-link"><a routerLink="/logout">Logout</a></li>
+            <li  class="nav-link"><a routerLink="/register">Register New Student</a></li>
+            <!-- <li  *ngIf="isUserLoggedIn" class="nav-link"><a routerLink="/logout">Logout</a></li> -->
+        </ul>
+
+    </nav>
+
+</header>
